@@ -29,18 +29,16 @@ public class SlidingDoor : Interactable {
     {
         if (!_inProgress)
         {
+            timePassed = 0;
+            _inProgress = true;
             if (doorOpen)
             {
-                timePassed = 0;
                 doorOpen = false;
-                _inProgress = true;
                 StartCoroutine(MoveDoor(_openPosition, _closedPosition));
             }
             else
             {
-                timePassed = 0;
                 doorOpen = true;
-                _inProgress = true;
                 StartCoroutine(MoveDoor(_closedPosition, _openPosition));
             }
         }
