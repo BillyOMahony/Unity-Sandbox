@@ -157,9 +157,9 @@ public class SpaceshipController  : MonoBehaviour
 
     void SetThrottle()
     {
-        if (Input.GetButton("Forward") || Input.GetAxis("Forward") > 0) ;
+        if (Input.GetButton("Vertical") || Input.GetAxis("Vertical") > 0)
         {
-            engine += engineAcceleration * Time.deltaTime * Input.GetAxis("Forward");
+            engine += engineAcceleration * Time.deltaTime * Input.GetAxis("Vertical");
 
             if (engine > 1)
             {
@@ -192,7 +192,7 @@ public class SpaceshipController  : MonoBehaviour
     void HorizontalMovement()
     {
 
-        _horizontalAcceleration = Input.GetAxis("Horizontal") * Time.deltaTime * 200 * _massMultiplier;
+        _horizontalAcceleration = Input.GetAxis("Strafe") * Time.deltaTime * 200 * _massMultiplier;
 
         if(xVel > maxHorizontalSpeed)
         {
@@ -207,7 +207,7 @@ public class SpaceshipController  : MonoBehaviour
 
     void VerticalMovement() {
 
-        _verticalAcceleration = Input.GetAxis("Vertical") * Time.deltaTime * 200 * _massMultiplier;
+        _verticalAcceleration = Input.GetAxis("Up") * Time.deltaTime * 200 * _massMultiplier;
 
         if (yVel > maxVerticalSpeed)
         {
@@ -230,7 +230,7 @@ public class SpaceshipController  : MonoBehaviour
 
     void Yaw()
     {
-        yaw = turnSpeed * Time.deltaTime * Input.GetAxis("Yaw") * _massMultiplier * 12.5f;
+        yaw = turnSpeed * Time.deltaTime * Input.GetAxis("Horizontal") * _massMultiplier * 12.5f;
         if (yaw > maxTurn)
         {
             yaw = maxTurn;
@@ -243,7 +243,7 @@ public class SpaceshipController  : MonoBehaviour
 
     void Pitch()
     {
-        pitch = turnSpeed * Time.deltaTime * Input.GetAxis("Pitch") * -1 * _massMultiplier * 2;
+        pitch = turnSpeed * Time.deltaTime * Input.GetAxis("Mouse Y") * -1 * _massMultiplier * 2;
         if (pitch > maxTurn)
         {
             pitch = maxTurn;
@@ -255,7 +255,7 @@ public class SpaceshipController  : MonoBehaviour
 
     void Roll()
     {
-        roll = turnSpeed * Time.deltaTime * Input.GetAxis("Roll") * -1 * _massMultiplier * 4;
+        roll = turnSpeed * Time.deltaTime * Input.GetAxis("Mouse X") * -1 * _massMultiplier * 4;
         if (roll > maxTurn)
         {
             roll = maxTurn;
@@ -275,11 +275,11 @@ public class SpaceshipController  : MonoBehaviour
 
     void Stabilization()
     {
-        if (!Input.GetButton("Vertical"))
+        if (!Input.GetButton("Up"))
         {
             _body.AddForce(_spaceship.transform.up * yVel * -1 * _massMultiplier);
         }
-        if (!Input.GetButton("Horizontal"))
+        if (!Input.GetButton("Strafe"))
         {
             _body.AddForce(_spaceship.transform.right * xVel * -1 * _massMultiplier);
         }

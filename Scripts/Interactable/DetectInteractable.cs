@@ -24,16 +24,14 @@ public class DetectInteractable : MonoBehaviour {
     {
         RaycastHit hit;
         _interactText.SetActive(false);
-        if (Physics.Raycast(transform.position, transform.forward, out hit, 3))
+        Physics.Raycast(transform.position, transform.forward, out hit, 3);
+        if (hit.collider != null && hit.collider.tag == "Interactable")
         {
-            Debug.Log("There is something in front of the object!");
-            if (hit.collider.tag == "Interactable")
+            //Debug.Log("There is something interactable in front of the object!");
+            if (!_interactText.activeSelf)_interactText.SetActive(true);
+            if (Input.GetButtonDown("Interact"))
             {
-                _interactText.SetActive(true);
-                if (Input.GetButton("Interact"))
-                {
-                    hit.collider.SendMessage("Interact");
-                }
+                hit.collider.SendMessage("Interact");
             }
         }
     }
