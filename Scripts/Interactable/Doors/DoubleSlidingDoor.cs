@@ -6,6 +6,7 @@ public class DoubleSlidingDoor : Interactable {
 
     GameObject leftDoor;
     GameObject rightDoor;
+    bool state = false; //false = closed, true = open
 
 	// Use this for initialization
 	void Start () {

@@ -5,6 +5,8 @@ using UnityEngine;
 public class Spaceship : Vehicle {
 
     GameObject _player;
+    GameObject _camera;
+
     SpaceshipController _sc;
     Rigidbody _rb;
     Transform _exitPoint;
@@ -15,8 +17,9 @@ public class Spaceship : Vehicle {
         _player = GameObject.Find("Player");
         _sc = GetComponent<SpaceshipController>();
         _rb = GetComponent<Rigidbody>();
+        _camera = transform.GetChild(0).gameObject;
         _exitPoint = transform.GetChild(1);
-	}
+    }
 	
 	// Update is called once per frame
 	void FixedUpdate () {
@@ -26,8 +29,11 @@ public class Spaceship : Vehicle {
     /// <summary>
     /// Allows player to enter spaceship
     /// </summary>
-    public override void Enter()
+    public override void Interact()
     {
+        _camera.SetActive(true);
+        _player.SetActive(false);
+        InteractText.SetActive(false);
         _sc.Enabled();
         _rb.isKinematic = false;
         _rb.useGravity = false;
