@@ -49,21 +49,20 @@ public class AutomaticDoor : AutomaticInteractable {
         doorOpen = false;
     }
 
+    /// <summary>
+    /// Lerps the door. This function is constantly called in Update
+    /// if _inProgress = true then the door will be lerped this frame
+    /// </summary>
     void MoveDoor()
     {
         if (_inProgress)
         {
             float fracJourney = timePassed / movementTime;
 
-            if (doorOpen)
-            {
-                timePassed += Time.deltaTime;
-            }
-            else
-            {
-                timePassed -= Time.deltaTime;
-            }
+            if (doorOpen)timePassed += Time.deltaTime;
+            else timePassed -= Time.deltaTime;
 
+            //If timePassed at min or max, don't lerp after this frame. 
             if (timePassed > movementTime)
             {
                 _inProgress = false;
