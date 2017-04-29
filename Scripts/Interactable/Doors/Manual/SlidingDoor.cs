@@ -25,7 +25,7 @@ public class SlidingDoor : Interactable {
     /// Opens or closes the door. 
     /// Only calls the Coroutine if the door is not in the process of opening or closing.
     /// </summary>
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
         if (!_inProgress)
         {

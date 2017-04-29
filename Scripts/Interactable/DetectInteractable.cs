@@ -31,7 +31,7 @@ public class DetectInteractable : MonoBehaviour {
             if (!_interactText.activeSelf)_interactText.SetActive(true);
             if (Input.GetButtonDown("Interact"))
             {
-                hit.collider.SendMessage("Interact");
+                hit.collider.SendMessage("Interact", transform.parent.gameObject);
             }
         }
     }

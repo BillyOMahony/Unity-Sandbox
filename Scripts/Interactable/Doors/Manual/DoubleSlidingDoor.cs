@@ -14,9 +14,9 @@ public class DoubleSlidingDoor : Interactable {
         rightDoor = transform.GetChild(1).gameObject;
 	}
 
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
-        leftDoor.GetComponent<SlidingDoor>().Interact();
-        rightDoor.GetComponent<SlidingDoor>().Interact();
+        leftDoor.GetComponent<SlidingDoor>().Interact(null);
+        rightDoor.GetComponent<SlidingDoor>().Interact(null);
     }
 }

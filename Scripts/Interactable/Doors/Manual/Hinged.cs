@@ -43,7 +43,7 @@ public class Hinged : Interactable {
         }
     }
 
-    public override void Interact()
+    public override void Interact(GameObject player)
     {
         if (!_inProgress)
         {

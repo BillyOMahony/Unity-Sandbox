@@ -6,6 +6,8 @@ public abstract class Vehicle : Interactable {
     public GameObject InteractText;
 
     public abstract void Exit();
+    public abstract void EntryAnimation();
+    public abstract void ExitAnimation();
 
     void Awake()
     {
