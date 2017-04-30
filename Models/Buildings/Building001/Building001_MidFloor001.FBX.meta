@@ -1,30 +1,15 @@
 fileFormatVersion: 2
-guid: 8661eaacc8eccad4085d5da5e5e169b4
-timeCreated: 1493210046
+guid: 2d3b247ebd302ac45a0f01e27841deb8
+timeCreated: 1493507130
 licenseType: Free
 ModelImporter:
   serializedVersion: 19
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Stairs
-    100004: Stairs001
-    100006: StairsLanding001
     400000: //RootNode
-    400002: Stairs
-    400004: Stairs001
-    400006: StairsLanding001
     2300000: //RootNode
-    2300002: Stairs
-    2300004: Stairs001
-    2300006: StairsLanding001
     3300000: //RootNode
-    3300002: Stairs
-    3300004: Stairs001
-    3300006: StairsLanding001
-    4300000: StairsLanding
-    4300002: Stairs
-    4300004: Stairs001
-    4300006: StairsLanding001
+    4300000: Mid-Floor
     9500000: //RootNode
   materials:
     importMaterials: 1
