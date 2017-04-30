@@ -48,7 +48,7 @@ public class Spaceship : Vehicle {
         {
             Debug.LogError("Cannopy: Null");
         }
-        _cannopyOpenRotation = _cannopy.rotation;
+        _cannopyOpenRotation = _cannopy.localRotation;
     }
 	
 	// Update is called once per frame
@@ -186,7 +186,8 @@ public class Spaceship : Vehicle {
                 _player.SetActive(true);
                 _camera.transform.rotation = Quaternion.Euler(0,0,0);
                 _player.transform.position = _exitPoint.position;
-                _player.transform.rotation = _exitPoint.rotation;
+                _player.transform.rotation = Quaternion.Euler(0, 0, 0);
+                _camera.transform.localPosition = new Vector3(0, 0.8f, 0);
             }
 
             yield return null;
@@ -206,7 +207,7 @@ public class Spaceship : Vehicle {
             _animTimePassed += Time.deltaTime;
             float fracJourney = _animTimePassed / _cannopyAnimTime;
 
-            _cannopy.rotation = Quaternion.Slerp(_pos1, _pos2, fracJourney);
+            _cannopy.localRotation = Quaternion.Slerp(_pos1, _pos2, fracJourney);
 
             if(fracJourney > 1)
             {
