@@ -17,7 +17,7 @@ public class SlidingDoor : Interactable {
 
     void Start()
     {
-        _closedPosition = transform.position;
+        _closedPosition = transform.localPosition;
         _openPosition = _closedPosition + Vector3.right * movement;
     }
 
@@ -57,7 +57,7 @@ public class SlidingDoor : Interactable {
         {
             timePassed += Time.deltaTime;
             float fracJourney = timePassed / movementTime;
-            transform.position = Vector3.Lerp(startPos, endPos, fracJourney);
+            transform.localPosition = Vector3.Lerp(startPos, endPos, fracJourney);
             if (timePassed > movementTime) {
                 _inProgress = false;
             }

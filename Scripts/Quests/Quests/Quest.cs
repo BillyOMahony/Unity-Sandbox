@@ -43,6 +43,7 @@ public class Quest : MonoBehaviour {
         foreach(GameObject t in taskList)
         {
             Task task = t.GetComponent<Task>();
+            Instantiate(task, transform);
             task.quest = this;
             task.SpawnObjects();
             task.taskNum = i;

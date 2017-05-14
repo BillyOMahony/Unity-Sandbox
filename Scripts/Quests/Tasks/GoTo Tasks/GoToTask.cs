@@ -11,7 +11,7 @@ public class GoToTask : Task {
 
     void Start()
     {
-        //SpawnObjects();
+        SpawnObjects();
     }
 
     public void PlayerArrived()
