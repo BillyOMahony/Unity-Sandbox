@@ -18,7 +18,7 @@ public abstract class Item : MonoBehaviour {
 
     public string item_Name;
     public float weight;
-    public Image icon;
+    public Sprite icon;
     public int value;
     public Rarity rarity;
     public Type type;
