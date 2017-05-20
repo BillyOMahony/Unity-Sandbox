@@ -9,6 +9,8 @@ public class ExitPanel : MonoBehaviour {
         if (Input.GetButtonDown("Cancel"))
         {
             gameObject.SetActive(false);
+            Time.timeScale = 1f;
+            CursorStates.Instance.UnlockCursor();
         }
 	}
 }

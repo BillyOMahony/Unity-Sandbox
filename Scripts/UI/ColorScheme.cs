@@ -28,6 +28,26 @@ public class ColorScheme: Singleton<ColorScheme>{
         rare = new RarityScheme(lightGold, darkGold);
     }
 
+    public RarityScheme GetRarityScheme(Item.Rarity rarity)
+    {
+        switch (rarity)
+        {
+            case Item.Rarity.Common:
+                return common;
+
+            case Item.Rarity.Uncommon:
+                return uncommon;
+
+            case Item.Rarity.Rare:
+                return rare;
+
+            default:
+                Debug.LogError("Cannot Find ColorScheme");
+                return new RarityScheme(new Color(0, 0, 0), new Color(0, 0, 0));
+        }
+    }
+
+
     void Start()
     {
         Setup();
