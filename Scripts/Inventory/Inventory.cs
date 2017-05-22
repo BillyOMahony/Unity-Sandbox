@@ -23,6 +23,8 @@ public class Inventory : MonoBehaviour
             inventory[x] = invItem;
         }
 
+        //Success Message
+
     }
 
     /*
@@ -38,7 +40,7 @@ public class Inventory : MonoBehaviour
     public void RemoveItems(StoredItem item)
     {
         int i = HasItem(item);
-        if (i > 0)
+        if (i >= 0)
         {
             StoredItem invItem = inventory[i];
             if (invItem.amount == item.amount)

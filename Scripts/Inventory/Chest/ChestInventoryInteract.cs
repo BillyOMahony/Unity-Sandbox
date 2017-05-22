@@ -17,8 +17,8 @@ public class ChestInventoryInteract : Interactable
     {
         _chestInv = GetComponent<ChestInventory>();
 
-        _canvas = GameObject.Find("Canvas").transform;
-        _chestInventoryPanel = _canvas.Find("ChestInventory Panel").gameObject;
+        _canvas = GUIPanels.Instance.Canvas.transform;
+        _chestInventoryPanel = GUIPanels.Instance.ChestInventoryPanel;
         if (_chestInventoryPanel == null)
         {
             Debug.LogError("Cannot find 'ChestInventory Panel'");
@@ -57,12 +57,12 @@ public class ChestInventoryInteract : Interactable
 
         foreach (StoredItem i in chestInventory)
         {
-            CreateItemPanel(i, itemsPanel, offset, player);
+            CreateItemPanel(i, itemsPanel, offset);
             offset -= 80;
         }
     }
 
-    void CreateItemPanel(StoredItem i, Transform itemsPanel, float offset, GameObject player)
+    void CreateItemPanel(StoredItem i, Transform itemsPanel, float offset)
     {
         Item item = i.item;
 

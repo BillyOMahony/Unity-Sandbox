@@ -13,6 +13,9 @@ public abstract class Item : MonoBehaviour {
     };
 
     public enum Type {
+        Weapon,
+        Armor, 
+        Resource,
         Scrap       
     };
 
