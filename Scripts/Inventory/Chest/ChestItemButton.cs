@@ -14,9 +14,14 @@ public class ChestItemButton : MonoBehaviour
     /// </summary>
     public void AddToPlayer()
     {
+        AddItem();
+        ChestInventory.gameObject.GetComponent<ChestInventoryInteract>().SetUpChestInventoryPanel(Player);
+    }
+
+    public void AddItem()
+    {
         ChestInventory.RemoveItems(item);
         Player.GetComponent<Inventory>().AddItem(item);
-        ChestInventory.gameObject.GetComponent<ChestInventoryInteract>().SetUpChestInventoryPanel(Player);
     }
 
 }

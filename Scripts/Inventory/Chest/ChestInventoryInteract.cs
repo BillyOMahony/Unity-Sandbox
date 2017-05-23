@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityStandardAssets.Characters.FirstPerson;
 
 public class ChestInventoryInteract : Interactable
 {
@@ -32,6 +33,13 @@ public class ChestInventoryInteract : Interactable
         //PAUSE PLAYER MOVEMENT
         Time.timeScale = 0f;
         CursorStates.Instance.UnlockCursor();
+
+        //Set Mouse Sensitivity to 0: stops movement of mouse
+        //Eventually replace this once I have my own FP controller. This is temporary to work
+        //with Unity FPController
+        _player.GetComponent<FirstPersonController>().m_MouseLook.XSensitivity = 0f;
+        _player.GetComponent<FirstPersonController>().m_MouseLook.YSensitivity = 0f;
+
     }
 
     public void SetUpChestInventoryPanel(GameObject player)
@@ -60,6 +68,8 @@ public class ChestInventoryInteract : Interactable
             CreateItemPanel(i, itemsPanel, offset);
             offset -= 80;
         }
+
+        SetUpButtons(player);
     }
 
     void CreateItemPanel(StoredItem i, Transform itemsPanel, float offset)
@@ -100,6 +110,16 @@ public class ChestInventoryInteract : Interactable
         cib.Player = _player;
         cib.ChestInventory = _chestInv;
         cib.item = i;
+    }
+
+    void SetUpButtons(GameObject player)
+    {
+        ChestButtons takeAll = _chestInventoryPanel.transform.GetChild(1).GetChild(0).GetComponent<ChestButtons>();
+        takeAll.Player = player;
+        takeAll.ChestInventory = _chestInv;
+        
+        ChestButtons close = _chestInventoryPanel.transform.GetChild(1).GetChild(1).GetComponent<ChestButtons>();
+        close.Player = player;
     }
 
 }

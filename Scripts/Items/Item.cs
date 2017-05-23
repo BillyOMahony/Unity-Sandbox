@@ -20,6 +20,8 @@ public abstract class Item : MonoBehaviour {
     };
 
     public string item_Name;
+    public string description;
+    public GameObject prefab;
     public float weight;
     public Sprite icon;
     public int value;

@@ -25,6 +25,9 @@ public class PlayerInventory : MonoBehaviour
 
     public void UpdateGUI(Item.Type type)
     {
+        GUIPanels.Instance.SubInventoryText.GetComponent<Text>().text = type.ToString();
+
+        ClearItemPanel();
 
         //Delete All Existing Items in Inventory
         ClearInvGUI();
@@ -53,6 +56,7 @@ public class PlayerInventory : MonoBehaviour
                 invItem.transform.GetChild(1).GetComponent<Image>().sprite = item.item.icon;
                 invItem.transform.GetChild(2).GetComponent<Text>().text = item.amount.ToString();
 
+                invItem.GetComponent<PlayerInventoryItem>().Item = item;
 
                 xOffset += 180;
                 if (counter > 6)
@@ -70,6 +74,15 @@ public class PlayerInventory : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+    }
+
+    void ClearItemPanel()
+    {
+        GameObject itemPanel = GUIPanels.Instance.InventoryItemPanel;
+        itemPanel.transform.GetChild(0).GetComponent<Text>().text = "";
+        itemPanel.transform.GetChild(1).GetComponent<Text>().text = "";
+        itemPanel.transform.GetChild(2).GetComponent<Text>().text = "";
+        itemPanel.transform.GetChild(3).GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
     }
 
 }
