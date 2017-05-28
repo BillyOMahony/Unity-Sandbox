@@ -26,13 +26,16 @@ public class ChestInventoryInteract : Interactable
         }
     }
 
+    /// <summary>
+    /// Called when player interacts with chest
+    /// </summary>
+    /// <param name="player">The Player GameObject</param>
     public override void Interact(GameObject player)
     {
         _player = player;
         SetUpChestInventoryPanel(player);
         //PAUSE PLAYER MOVEMENT
         Time.timeScale = 0f;
-        CursorStates.Instance.UnlockCursor();
 
         //Set Mouse Sensitivity to 0: stops movement of mouse
         //Eventually replace this once I have my own FP controller. This is temporary to work
@@ -42,6 +45,10 @@ public class ChestInventoryInteract : Interactable
 
     }
 
+    /// <summary>
+    /// Sets Up the ChestInventory Panel
+    /// </summary>
+    /// <param name="player"></param>
     public void SetUpChestInventoryPanel(GameObject player)
     {
         _playerInv = player.GetComponent<Inventory>();
@@ -70,8 +77,15 @@ public class ChestInventoryInteract : Interactable
         }
 
         SetUpButtons(player);
+        CursorStates.Instance.UnlockCursor();
     }
 
+    /// <summary>
+    /// Creates a new ItemPanel
+    /// </summary>
+    /// <param name="i">Item this panel represents</param>
+    /// <param name="itemsPanel">Items Panel, parent of created panel</param>
+    /// <param name="offset">Offset from previous panel</param>
     void CreateItemPanel(StoredItem i, Transform itemsPanel, float offset)
     {
         Item item = i.item;
@@ -112,6 +126,10 @@ public class ChestInventoryInteract : Interactable
         cib.item = i;
     }
 
+    /// <summary>
+    /// Assigns relevant attributes of buttons
+    /// </summary>
+    /// <param name="player"></param>
     void SetUpButtons(GameObject player)
     {
         ChestButtons takeAll = _chestInventoryPanel.transform.GetChild(1).GetChild(0).GetComponent<ChestButtons>();

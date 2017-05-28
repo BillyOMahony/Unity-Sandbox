@@ -26,6 +26,14 @@ public class ExitPanel : MonoBehaviour
 
 	// Update is called once per frame
 	void Update () {
+        CheckGUI();   
+	}
+
+    /// <summary>
+    /// Checks what panel are currently open and decides action of "Cancel" button based on that. 
+    /// </summary>
+    void CheckGUI()
+    {
         if (Input.GetButtonDown("Cancel"))
         {
             if (_chestInventory.activeSelf)
@@ -62,9 +70,13 @@ public class ExitPanel : MonoBehaviour
                 ChangeMouseLookState(false);
             }
         }
-	}
+    }
 
-
+    /// <summary>
+    /// Changes Sensitivity of mouse
+    /// Temporary until I make my own FP controller
+    /// </summary>
+    /// <param name="state">True means allow mouse look, false means don't</param>
     void ChangeMouseLookState(bool state)
     {
         if (state)

@@ -14,6 +14,9 @@ public class Menu : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Closes Menu Panel and resumes game
+    /// </summary>
     public void ClickResume()
     {
         GUIPanels.Instance.MainMenu.SetActive(false);
@@ -26,7 +29,10 @@ public class Menu : MonoBehaviour
         _player.GetComponent<FirstPersonController>().m_MouseLook.XSensitivity = 2f;
         _player.GetComponent<FirstPersonController>().m_MouseLook.YSensitivity = 2f;
     }
-
+    
+    /// <summary>
+    /// Opens Inventory Panel
+    /// </summary>
     public void ClickInventory()
     {
         GUIPanels.Instance.MainMenu.SetActive(false);

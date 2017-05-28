@@ -23,6 +23,10 @@ public class PlayerInventory : MonoBehaviour
 		
 	}
 
+    /// <summary>
+    /// Updates the Inventory with all items of Type type
+    /// </summary>
+    /// <param name="type"></param>
     public void UpdateGUI(Item.Type type)
     {
         GUIPanels.Instance.SubInventoryText.GetComponent<Text>().text = type.ToString();
@@ -68,6 +72,9 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Removes all children panels of ItemsPanel
+    /// </summary>
     void ClearInvGUI()
     {
         foreach (Transform child in ItemsPanel)
@@ -76,6 +83,9 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Clears the Item Panel
+    /// </summary>
     void ClearItemPanel()
     {
         GameObject itemPanel = GUIPanels.Instance.InventoryItemPanel;
