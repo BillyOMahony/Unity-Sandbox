@@ -8,6 +8,7 @@ public class GUIPanels : Singleton<GUIPanels>
 
     public GameObject Canvas;
     public GameObject ChestInventoryPanel;
+    public GameObject ChestCloseButton;
 
     public GameObject MainMenu;
 

@@ -9,6 +9,12 @@ public class ChestButtons : MonoBehaviour
     public GameObject Player;
     public ChestInventory ChestInventory;
 
+    void Update(){
+        if (Input.GetButtonDown("Cancel")){
+            Close();
+        }
+    }
+
     /// <summary>
     /// Adds all Items in Chest to Inventory
     /// </summary>
@@ -20,7 +26,9 @@ public class ChestButtons : MonoBehaviour
             child.GetComponent<ChestItemButton>().AddItem();
         }
 
-        ChestInventory.gameObject.GetComponent<ChestInventoryInteract>().SetUpChestInventoryPanel(Player);
+        ChestInventory.gameObject.GetComponent<ChestInventoryGUI>().SetUpChestInventoryPanel();
+
+        Close();
     }
 
     /// <summary>
@@ -32,6 +40,8 @@ public class ChestButtons : MonoBehaviour
         Time.timeScale = 1f;
 
         CursorStates.Instance.LockCursor();
+
+        ChestInventory.gameObject.GetComponent<ChestInteractable>().Close();
 
         //Eventually replace
         Player.GetComponent<FirstPersonController>().m_MouseLook.XSensitivity = 2f;

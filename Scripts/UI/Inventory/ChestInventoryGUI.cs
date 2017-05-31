@@ -4,21 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class ChestInventoryInteract : Interactable
-{
+public class ChestInventoryGUI : MonoBehaviour {
+
     public GameObject ItemPanel;
 
     private GameObject _chestInventoryPanel;
-    private Transform _canvas;
     private ChestInventory _chestInv;
     private Inventory _playerInv;
     private GameObject _player;
 
+    
+
     void Start()
     {
         _chestInv = GetComponent<ChestInventory>();
-
-        _canvas = GUIPanels.Instance.Canvas.transform;
         _chestInventoryPanel = GUIPanels.Instance.ChestInventoryPanel;
         if (_chestInventoryPanel == null)
         {
@@ -27,13 +26,15 @@ public class ChestInventoryInteract : Interactable
     }
 
     /// <summary>
-    /// Called when player interacts with chest
+    /// Called Externally
     /// </summary>
-    /// <param name="player">The Player GameObject</param>
-    public override void Interact(GameObject player)
-    {
+    /// <param name="player"></param>
+    public void SetUp(GameObject player){
+
         _player = player;
-        SetUpChestInventoryPanel(player);
+        SetUpChestInventoryPanel();
+        Debug.Log(player);
+        
         //PAUSE PLAYER MOVEMENT
         Time.timeScale = 0f;
 
@@ -42,16 +43,15 @@ public class ChestInventoryInteract : Interactable
         //with Unity FPController
         _player.GetComponent<FirstPersonController>().m_MouseLook.XSensitivity = 0f;
         _player.GetComponent<FirstPersonController>().m_MouseLook.YSensitivity = 0f;
-
     }
+
 
     /// <summary>
     /// Sets Up the ChestInventory Panel
     /// </summary>
-    /// <param name="player"></param>
-    public void SetUpChestInventoryPanel(GameObject player)
+    public void SetUpChestInventoryPanel()
     {
-        _playerInv = player.GetComponent<Inventory>();
+        _playerInv = _player.GetComponent<Inventory>();
 
         List<StoredItem> chestInventory = _chestInv.inventory;
         _chestInventoryPanel.SetActive(true);
@@ -76,7 +76,7 @@ public class ChestInventoryInteract : Interactable
             offset -= 80;
         }
 
-        SetUpButtons(player);
+        SetUpButtons();
         CursorStates.Instance.UnlockCursor();
     }
 
@@ -93,7 +93,7 @@ public class ChestInventoryInteract : Interactable
         Transform panel = Instantiate(ItemPanel, itemsPanel).transform;
         panel.localPosition = new Vector2(0, offset);
         panel.localScale = new Vector2(1, 1);
-        
+
         //Get ColorScheme
         Item.Rarity rarity = item.rarity;
         RarityScheme scheme = ColorScheme.Instance.GetRarityScheme(rarity);
@@ -129,15 +129,15 @@ public class ChestInventoryInteract : Interactable
     /// <summary>
     /// Assigns relevant attributes of buttons
     /// </summary>
-    /// <param name="player"></param>
-    void SetUpButtons(GameObject player)
+    void SetUpButtons()
     {
         ChestButtons takeAll = _chestInventoryPanel.transform.GetChild(1).GetChild(0).GetComponent<ChestButtons>();
-        takeAll.Player = player;
+        takeAll.Player = _player;
         takeAll.ChestInventory = _chestInv;
-        
+
         ChestButtons close = _chestInventoryPanel.transform.GetChild(1).GetChild(1).GetComponent<ChestButtons>();
-        close.Player = player;
+        close.ChestInventory = _chestInv;
+        close.Player = _player;
     }
 
 }

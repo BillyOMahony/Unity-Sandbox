@@ -39,8 +39,11 @@ public class ExitPanel : MonoBehaviour
             if (_chestInventory.activeSelf)
             {
                 _chestInventory.SetActive(false);
+
                 Time.timeScale = 1f;
                 CursorStates.Instance.LockCursor();
+
+                GUIPanels.Instance.ChestCloseButton.GetComponent<ChestButtons>().Close();
 
                 //Temp
                 ChangeMouseLookState(true);
