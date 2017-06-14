@@ -40,4 +40,11 @@ public class Menu : MonoBehaviour
 
         GUIPanels.Instance.InventoryButtons.GetComponent<InventoryButtons>().LoadInventory();
     }
+
+    /// <summary>
+    /// Exits the Game
+    /// </summary>
+    public void ClickExit(){
+        Application.Quit();
+    }
 }

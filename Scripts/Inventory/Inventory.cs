@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -6,6 +7,12 @@ using System.Linq;
 public class Inventory : MonoBehaviour
 {
     public List<StoredItem> inventory = new List<StoredItem>();
+    private MessageQueue Queue;
+    public bool IsPlayerInventory = false;
+
+    void Start(){
+        Queue = GameObject.Find("GameManager").GetComponent<MessageQueue>();
+    }
 
     public void AddItem(StoredItem item)
     {
@@ -24,6 +31,7 @@ public class Inventory : MonoBehaviour
         }
 
         //Success Message
+        if(IsPlayerInventory)Queue.AddToQueue("Item Added: " + item.item.ToString() + " x" + item.amount);
 
     }
 
