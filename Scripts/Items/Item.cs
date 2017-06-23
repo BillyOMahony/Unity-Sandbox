@@ -16,7 +16,8 @@ public abstract class Item : MonoBehaviour {
         Weapon,
         Armor, 
         Resource,
-        Scrap       
+        Scrap,
+        Quest    
     };
 
     public string item_Name;

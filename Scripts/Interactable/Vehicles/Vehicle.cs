@@ -9,11 +9,12 @@ public abstract class Vehicle : Interactable {
     public abstract void EntryAnimation();
     public abstract void ExitAnimation();
 
-    void Awake()
-    {
+    void Start(){
+        InteractText = GUIPanels.Instance.InteractText;
         if (InteractText == null)
         {
-            Debug.LogError("InteractText not set up on " + gameObject.name); 
+            Debug.LogError("InteractText not set up on " + gameObject.name);
         }
     }
+
 }

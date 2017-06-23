@@ -19,4 +19,6 @@ public class GUIPanels : Singleton<GUIPanels>
 
     public GameObject InventoryItemPanel;
 
+    public GameObject InteractText;
+
 }

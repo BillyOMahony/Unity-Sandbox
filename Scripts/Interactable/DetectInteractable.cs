@@ -11,7 +11,7 @@ public class DetectInteractable : MonoBehaviour {
 
         //Spawn Interact Text, set parent as canvas
         //Position it to center of canvas
-        interactText = Instantiate(interactText, GameObject.Find("Canvas").transform);
+        interactText = GUIPanels.Instance.InteractText;
         interactText.transform.localPosition = new Vector3(0, 0);
 
         interactText.SetActive(false);
