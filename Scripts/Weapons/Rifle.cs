@@ -29,7 +29,7 @@ public class Rifle : Weapon{
 
     void CheckForKeyPress()
     {
-        if (Input.GetButtonDown("Fire1") && Time.time > nextFire)
+        if (Input.GetButtonDown("Fire1") && Time.time > nextFire && weaponActive)
         {
             Shoot();
         }

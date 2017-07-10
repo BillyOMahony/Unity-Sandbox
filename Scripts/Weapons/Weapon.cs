@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public abstract class Weapon : MonoBehaviour{
 
-    public bool gunActive;
+    public bool weaponActive;
 
     public float weaponDamage;
     public float fireRate;
