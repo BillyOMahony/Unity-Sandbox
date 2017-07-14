@@ -12,6 +12,4 @@ public class Pickup : Interactable {
         item.amount = 1;
         player.GetComponent<Inventory>().AddItem(item);
     }
-
-
 }
