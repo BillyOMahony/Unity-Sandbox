@@ -21,6 +21,8 @@ public class Inventory : MonoBehaviour
     public void AddItem(StoredItem item)
     {
 
+        item = DuplicateItem(item);
+
         int x = HasItem(item);
 
         if (x < 0)
@@ -36,6 +38,17 @@ public class Inventory : MonoBehaviour
 
         //Success Message
         if(IsPlayerInventory)Queue.AddToQueue("Item Added: " + item.item.ToString() + " x" + item.amount);
+
+    }
+
+    public StoredItem DuplicateItem(StoredItem item)
+    {
+        StoredItem newStoredItem;
+        Item newItem = new Item();
+        newItem = item.item;
+        newStoredItem.item = newItem;
+        newStoredItem.amount = item.amount;
+        return newStoredItem;
 
     }
 

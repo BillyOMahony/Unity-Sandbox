@@ -24,7 +24,7 @@ public class PlayerInventoryItem : MonoBehaviour
     public void Clicked()
     {
         GameObject itemPanel = GUIPanels.Instance.InventoryItemPanel;
-        itemPanel.transform.GetChild(0).GetComponent<Text>().text = Item.item.name;
+        itemPanel.transform.GetChild(0).GetComponent<Text>().text = Item.item.item_Name;
         itemPanel.transform.GetChild(1).GetComponent<Text>().text = Item.item.rarity.ToString();
         itemPanel.transform.GetChild(2).GetComponent<Text>().text = Item.item.description;
         itemPanel.transform.GetChild(3).GetComponent<Image>().sprite = Item.item.icon;
