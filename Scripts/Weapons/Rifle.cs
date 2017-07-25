@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,20 +28,21 @@ public class Rifle : Weapon{
         }
     }
 
+    public override void MadeActive()
+    {
+        laserLine = GetComponent<LineRenderer>();
+        weaponAudio = GetComponent<AudioSource>();
+        fpsCam = GetComponentInParent<Camera>();
+        PositionWeapon();
+        GetComponent<Crosshair>().DisplayCrosshair();
+    }
+
     void CheckForKeyPress()
     {
         if (Input.GetButtonDown("Fire1") && Time.time > nextFire && weaponActive)
         {
             Shoot();
         }
-    }
-
-    // Use this for initialization
-    void Start()
-    {
-        laserLine = GetComponent<LineRenderer>();
-        weaponAudio = GetComponent<AudioSource>();
-        fpsCam = GetComponentInParent<Camera>();
     }
 
     // Update is called once per frame

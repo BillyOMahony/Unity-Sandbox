@@ -4,8 +4,16 @@ using UnityEngine;
 
 public class AutomaticDoor : AutomaticInteractable {
 
+    public enum Direction
+    {
+        Up,
+        Right,
+        Forward
+    }
+
     public bool doorOpen;
     public float movement;
+    public Direction direction;
     public float movementTime;
 
     float timePassed = 0;
@@ -18,8 +26,23 @@ public class AutomaticDoor : AutomaticInteractable {
     void Start()
     {
         _closedPosition = transform.position;
-        _openPosition = _closedPosition + Vector3.right * movement;
         doorOpen = false;
+
+        switch (direction)
+        {
+            case Direction.Right:
+                _openPosition = _closedPosition + Vector3.right * movement;
+                break;
+
+            case Direction.Up:
+                _openPosition = _closedPosition + Vector3.up * movement;
+                break;
+
+            case Direction.Forward:
+                _openPosition = _closedPosition + Vector3.forward * movement;
+                break;
+        }
+
     }
 
     void Update()
@@ -78,4 +101,21 @@ public class AutomaticDoor : AutomaticInteractable {
             transform.position = Vector3.Lerp(_closedPosition, _openPosition, fracJourney);
         }
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Enter();
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            Exit();
+        }
+    }
+
 }

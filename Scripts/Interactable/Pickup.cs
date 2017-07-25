@@ -11,5 +11,6 @@ public class Pickup : Interactable {
         item.item = gameObject.GetComponent<Item>();
         item.amount = 1;
         player.GetComponent<Inventory>().AddItem(item);
+        Destroy(gameObject);
     }
 }

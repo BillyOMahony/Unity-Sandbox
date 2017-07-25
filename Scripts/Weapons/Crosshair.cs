@@ -11,7 +11,7 @@ public class Crosshair : MonoBehaviour {
     void Start()
     {
         _crosshair = GUIPanels.Instance.Crosshair;
-        DisplayCrosshair();
+        //DisplayCrosshair();
     }
 
     public void DisplayCrosshair()

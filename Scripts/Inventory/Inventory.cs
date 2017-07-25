@@ -11,9 +11,13 @@ public class Inventory : MonoBehaviour
     public bool IsPlayerInventory = false;
 
     void Start(){
-        Queue = GameObject.Find("GameManager").GetComponent<MessageQueue>();
+        Queue = GameObject.Find("InventoryMessageQueue").GetComponent<MessageQueue>();
     }
 
+    /// <summary>
+    /// Adds item to inventory, or adds amount if item already in inventory
+    /// </summary>
+    /// <param name="item"></param>
     public void AddItem(StoredItem item)
     {
 
