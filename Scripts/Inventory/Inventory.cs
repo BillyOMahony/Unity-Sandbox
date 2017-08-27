@@ -41,6 +41,12 @@ public class Inventory : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Used by AddItem()
+    /// Creates a new, identical copy of item
+    /// </summary>
+    /// <param name="item">StoredItem</param>
+    /// <returns>StoredItem identican to input</returns>
     public StoredItem DuplicateItem(StoredItem item)
     {
         StoredItem newStoredItem;

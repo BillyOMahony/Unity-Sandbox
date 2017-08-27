@@ -6,17 +6,17 @@ using UnityEngine.UI;
 public class Crosshair : MonoBehaviour {
 
     public Sprite crosshair;
-    private GameObject _crosshair;
+    private GameObject _crosshairPanel;
 
     void Start()
     {
-        _crosshair = GUIPanels.Instance.Crosshair;
-        //DisplayCrosshair();
+        _crosshairPanel = GUIPanels.Instance.Crosshair;
+        DisplayCrosshair();
     }
 
     public void DisplayCrosshair()
     {
-        _crosshair.GetComponent<Image>().sprite = crosshair;
+        _crosshairPanel.GetComponent<Image>().sprite = crosshair;
     }
 
 }

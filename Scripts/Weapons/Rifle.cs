@@ -45,6 +45,14 @@ public class Rifle : Weapon{
         }
     }
 
+    void Start()
+    {
+        if (weaponActive)
+        {
+            MadeActive();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
