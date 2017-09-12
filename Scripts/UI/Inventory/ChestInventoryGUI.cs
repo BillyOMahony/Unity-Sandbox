@@ -114,9 +114,9 @@ public class ChestInventoryGUI : MonoBehaviour {
         fg.transform.GetChild(0).GetComponent<Image>().sprite = item.icon;
 
         //Set Text
-        desc.transform.FindChild("Name").GetComponent<Text>().text = item.name;
-        desc.transform.FindChild("Type").GetComponent<Text>().text = rarity.ToString();
-        desc.transform.FindChild("Value").GetComponent<Text>().text = "$" + item.value;
+        desc.transform.Find("Name").GetComponent<Text>().text = item.name;
+        desc.transform.Find("Type").GetComponent<Text>().text = rarity.ToString();
+        desc.transform.Find("Value").GetComponent<Text>().text = "$" + item.value;
         amt.transform.GetChild(0).GetComponent<Text>().text = i.amount.ToString();
 
         //Set variables
